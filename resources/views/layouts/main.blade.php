@@ -148,17 +148,17 @@
                             </a>
                         </li> --}}
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/users"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/guide"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Acceptation</span>
+                                <span class="hide-menu">Ajouter Guide</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/archive"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/voyage"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-box-archive"></i>
-                                <span class="hide-menu">Archive</span>
+                                <span class="hide-menu">Ajouter voyage</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

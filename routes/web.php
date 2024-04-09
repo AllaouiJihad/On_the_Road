@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,9 @@ Route::post('/signup', [UserController::class,'register'])->name('register');
 Route::post('/signin', [UserController::class,'signin'])->name('signin');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/dash',[VoyageController::class, 'index']);
+Route::get('/voyage',[VoyageController::class, 'index']);
 
-Route::post('/dash',[VoyageController::class, 'store'])->name('addVoyage');
+Route::post('/voyage',[VoyageController::class, 'store'])->name('addVoyage');
+
+Route::get('/guide',[GuideController::class,'index']);
+Route::post('/guide',[GuideController::class, 'store'])->name('addGuide');

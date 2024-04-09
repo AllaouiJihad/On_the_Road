@@ -11,5 +11,11 @@ class Guide extends User
 
     protected $fillable = [
         'specialty',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
