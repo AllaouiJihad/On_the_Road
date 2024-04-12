@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoyageController;
@@ -31,3 +32,15 @@ Route::post('/voyage',[VoyageController::class, 'store'])->name('addVoyage');
 
 Route::get('/guide',[GuideController::class,'index']);
 Route::post('/guide',[GuideController::class, 'store'])->name('addGuide');
+
+Route::get('guides',[GuideController::class,'getAllGuides']);
+Route::put('guides/{id}',[GuideController::class,'update'])->name('update.guide');
+Route::delete('guides/{id}',[GuideController::class,'destroy'])->name('delete.guide');
+
+Route::get('/about',[GuideController::class, 'affichage']);
+
+
+
+
+Route::get('/contact', [ContactController::class,'showForm'])->name('contact.form');
+Route::post('/contact', [ContactController::class,'submitForm'])->name('contact.submit');

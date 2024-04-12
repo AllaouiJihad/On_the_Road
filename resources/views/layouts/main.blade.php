@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}"> --}}
 
-    <title>Onthe_road</title>
+    <title>Roaming Trails</title>
     <!-- <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" /> -->
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand text-dark font-weight-bold" href="/">
-                       <strong>On The Road</strong> 
+                       <strong>Roaming Trails</strong> 
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -162,10 +162,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/wikis"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/guides"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu"></span>
+                                <span class="hide-menu">Les Guides</span>
                             </a>
                         </li>
                       
@@ -173,7 +173,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/categories"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Categories</span>
+                                <span class="hide-menu">Les Voyages</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

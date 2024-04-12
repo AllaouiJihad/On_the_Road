@@ -71,8 +71,18 @@
 
                                 </div>
 
-                                <div class="mb-3">
-                                    <button type="submit">submit</button>
+                                @error('media')
+                                    <div class="alert alert-danger w-25"> {{ $message }}</div>
+                                @enderror
+                                <div class="form-group w-25">
+                                    <label for="media" class="form-label">Choose an image</label>
+                                    <input type="file" class="form-control" id="media" name="media"
+                                        aria-label="file example">
+
+                                </div>
+
+                                <div class="mb-3  ">
+                                    <button class="btn btn-primary" type="submit">submit</button>
 
                                 </div>
                             </section> <!-- SECTION 2 -->

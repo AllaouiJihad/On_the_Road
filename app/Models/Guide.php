@@ -12,6 +12,7 @@ class Guide extends User
     protected $fillable = [
         'specialty',
         'user_id',
+        'media',
     ];
 
     public function user()

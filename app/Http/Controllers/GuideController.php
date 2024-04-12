@@ -25,6 +25,7 @@ class GuideController extends Controller
             'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
             'specialty.required' => 'Le champ spécialité est requis.',
             'tel.required' => 'Le champ telephone est requis.',
+            'media.image' => 'Le fichier doit être une image',
 
         ];
         $validatedData = $request->validate([
@@ -33,10 +34,13 @@ class GuideController extends Controller
             'password' => 'required|string|min:8',
             'specialty' => 'required|string',
             'tel' => 'required',
+            'media' => 'nullable|image|required',
         ],$messages);
 
-        // Créer un nouvel utilisateur avec les données validées
-        // Créer un nouvel utilisateur
+       
+        $mediaPath = $request->file('media')->store('uploads', 'public');
+
+        // $checkifexcite = User::where(email)
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -44,13 +48,48 @@ class GuideController extends Controller
             'password' => bcrypt($validatedData['password']),
         ]);
 
-        // Créer un nouveau guide associé à l'utilisateur
         $guide = new Guide([
             'specialty' => $validatedData['specialty'],
+            'media' => $mediaPath,
         ]);
         $user->guide()->save($guide);
 
-        // Rediriger l'utilisateur vers une page de confirmation ou une autre action
         return redirect()->back()->with('success', 'Guide ajouté avec succès!');
+    }
+
+    public function getAllGuides(){
+        $guides = Guide::with('user')->get();
+        return view('guides',compact('guides'));
+    }
+
+    public function update(Request $request, $id){
+        $guide = Guide::with('user')->where('user_id',$id)->first();
+        
+        if ($guide) {
+            $guide->user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'tel' => $request->tel,
+            ]);
+            Guide::where('user_id', $id)->update([
+                'specialty' => $request->specialty,
+            ]);
+            return redirect()->back()->with('success', 'Guide mis à jour avec succès!');
+        } 
+                
+    }
+
+    public function destroy($id){
+        $guide = Guide::with('user')->where('user_id',$id)->first();
+        if ($guide) {
+            $guide->user->delete();
+            Guide::where('user_id', $id)->delete();
+            return redirect()->back()->with('success', 'Guide supprimé avec succès!');
+        } 
+    }
+
+    public function affichage(){
+        $guides = Guide::with('user')->get();
+        return view('about',compact('guides'));
     }
 }
