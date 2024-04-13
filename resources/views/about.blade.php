@@ -108,16 +108,15 @@
           </div>
         <div class="title-content text-center mb-lg-3 mb-4">
           <h6 class="sub-title">Our team</h6>
-          <h3 class="hny-title">Meet our Guides</h3>
+          <h3 class="hny-title">Meet our Team</h3>
         </div>
         <div class="row">
-          @foreach ($guides as $guide)
           <div class="col-lg-3 col-6 mt-lg-5 mt-4">
             <div class="box16">
-              <a href="#url"><img src="{{asset('storage/' . $guide->media) }}" alt="" class="img-fluid"/></a>
+              <a href="#url"><img src="{{asset('assets/images/58.png')}}" alt="" class="img-fluid" /></a>
               <div class="box-content">
-                <h3 class="title"><a href="#url">{{$guide->user->name}} </a></h3>
-                <span class="post"> {{$guide->specialty}} </span>
+                <h3 class="title"><a href="#url">khalid</a></h3>
+                <span class="post">Description</span>
                 <ul class="social">
                   <li>
                     <a href="#" class="facebook">
@@ -133,13 +132,33 @@
               </div>
             </div>
           </div>
-          @endforeach
-          {{-- <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+          <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+            <div class="box16">
+              <a href="#url"><img src="{{asset('assets/images/99.png')}}" alt="" class="img-fluid" /></a>
+              <div class="box-content">
+                <h3 class="title"><a href="#url">Nassima</a></h3>
+                <span class="post">Description</span>
+                <ul class="social">
+                  <li>
+                    <a href="#" class="facebook">
+                      <span class="fa fa-facebook-f"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="twitter">
+                      <span class="fa fa-twitter"></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6 mt-lg-5 mt-4">
             <div class="box16">
               <a href="#url"><img src="{{asset('assets/images/98.png')}}" alt="" class="img-fluid" /></a>
               <div class="box-content">
-                <h3 class="title"><a href="#url">Khalid</a></h3>
-                <span class="post">Description</span>
+                <h3 class="title"><a href="#url">Fahd</a></h3>
+                <span class="post">Description</a></span>
                 <ul class="social">
                   <li>
                     <a href="#" class="facebook">
@@ -159,7 +178,8 @@
             <div class="box16">
               <a href="#url"><img src="{{asset('assets/images/44.png')}}" alt="" class="img-fluid" /></a>
               <div class="box-content">
-                <h3 class="title"><a href="#url">Narjess</a></h3>
+                <h3 class="title"><a href="#url">Yassmin</a></h3>
+                <span class="post">Description</a></span>
                 <ul class="social">
                   <li>
                     <a href="#" class="facebook">
@@ -175,29 +195,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-6 mt-lg-5 mt-4">
-            <div class="box16">
-              <a href="#url"><img src="{{asset('assets/images/58.png')}}" alt="" class="img-fluid" /></a>
-              <div class="box-content">
-                <h3 class="title"><a href="#url">Fahd</a></h3>
-                <ul class="social">
-                  <li>
-                    <a href="#" class="facebook">
-                      <span class="fa fa-facebook-f"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="twitter">
-                      <span class="fa fa-twitter"></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> --}}
         </div>
       </div>
     </div>
   </section>
+  <!-- //team -->
 
   @endsection

@@ -18,6 +18,12 @@ class Voyage extends Model
         "disbonibilite",
         "nbr_places",
         "media",
-        "destination",
+        "destination_id",
+        "region",
+        "impact",
+        "defecult",
+        "category_id",
+        "type_id",
+        "guide_id",
     ];
 }

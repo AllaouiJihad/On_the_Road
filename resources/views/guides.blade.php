@@ -24,7 +24,7 @@
                                 <th class="border-top-0">nom</th>
                                 <th class="border-top-0">email</th>
                                 <th class="border-top-0">telephone</th>
-                                <th class="border-top-0">Specialty</th>
+                                <th class="border-top-0">Region</th>
                                 <th>action</th>
                             </tr>
                         </thead>
@@ -36,7 +36,7 @@
                                     <td class="txt-oflo">{{ $guide->user->email }}</td>
                                     <td class="txt-oflo">{{ $guide->user->tel }}</td>
 
-                                    <td class="txt-oflo">{{ $guide->specialty }}</td>
+                                    <td class="txt-oflo">{{ $guide->region }}</td>
                                     <td class="d-flex">
 
                                         <button type="button" class="border-0 bg-transparent" data-toggle="modal"
@@ -113,11 +113,26 @@
                                                         <div class="alert alert-danger "> {{ $message }}</div>
                                                     @enderror
                                                     <div class="form-group">
-                                                        <label for="specialty"><i class="fa-solid fa-suitcase"> </i>
-                                                            Specialty:</label>
-                                                        <input type="text" class="form-control " name="specialty"
-                                                            id="email" placeholder="Your specialty"
-                                                            value="{{ $guide->specialty }}" />
+                                                        <label for="region"><i class="fa-solid fa-suitcase"> </i> Region:</label>
+                                                        {{-- <input type="text" class="form-control " name="region"
+                                                            id="email" placeholder="Your region"
+                                                            value="{{ $guide->specialty }}" /> --}}
+
+                                                            <select name="region" id="region" class="form-control">
+                                                                <option value="{{ $guide->region }}">{{ $guide->region }}</option>
+                                                                <option value="Tanger-Tétouan-Al Hoceïma">Tanger-Tétouan-Al Hoceïma</option>
+                                                                <option value="L'Oriental">L'Oriental</option>
+                                                                <option value="Fès-Meknès">Fès-Meknès</option>
+                                                                <option value="Rabat-Salé-Kénitra">Rabat-Salé-Kénitra</option>
+                                                                <option value="Béni Mellal-Khénifra">Béni Mellal-Khénifra</option>
+                                                                <option value="Marrakech-Safi">Marrakech-Safi</option>
+                                                                <option value="Drâa-Tafilalet">Drâa-Tafilalet</option>
+                                                                <option value="Souss-Massa">Souss-Massa</option>
+                                                                <option value="Guelmim-Oued Noun">Guelmim-Oued Noun</option>
+                                                                <option value="Laâyoune-Sakia El Hamra">Laâyoune-Sakia El Hamra</option>
+                                                                <option value="Dakhla-Oued Ed-Dahab">Dakhla-Oued Ed-Dahab</option>
+                                                                <option value="Casablanca-Settat">Casablanca-Settat</option>
+                                                              </select>
 
                                                     </div>
 

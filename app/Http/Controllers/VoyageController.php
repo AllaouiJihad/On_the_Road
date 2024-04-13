@@ -39,6 +39,9 @@ class VoyageController extends Controller
             'nbr_places.required' => 'Veuillez saisir le nombre de places',
             'media.image' => 'Le fichier doit être une image',
             'destination' => 'Veuillez saisir la destination',
+            'region.required' => 'Veuillez saisir la region',
+            'impact.required' => 'Veuillez saisir l\'impact',
+            'defecult.required' => 'Veuillez saisir la defecult',
         ];
         $validator = Validator::make($request->all(), [
             'titre' => 'required|string',
@@ -49,6 +52,9 @@ class VoyageController extends Controller
             'nbr_places' => 'required',
             'media' => 'nullable|image|required',
             'destination' =>'required',
+            'region' =>'required',
+            'impact' =>'required',
+            'defecult' =>'required',
         ], $messages);
 
         if ($validator->fails()) {
@@ -62,9 +68,15 @@ class VoyageController extends Controller
             'date_depart' => $request->input('date_depart'),
             'date_reteur' => $request->input('date_reteur'),
             'prix' => $request->input('prix'),
-            'destination' => $request->input('destination'),
             'nbr_places' => $request->input('nbr_places'),
             'media' => $mediaPath,
+            'destination' => $request->input('destination'),
+            'region' => $request->input('region'),
+            'impact' => $request->input('impact'),
+            'defecult' => $request->input('defecult'),
+            'category' => $request->input('category'),
+            'type' => $request->input('type'),
+            'guide' => $request->input('guide'),
         ]);
 
         if ($voyage != NULL) {
@@ -74,43 +86,5 @@ class VoyageController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function create(StoreVoyageRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Voyage $voyage)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Voyage $voyage)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateVoyageRequest $request, Voyage $voyage)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Voyage $voyage)
-    {
-        //
-    }
+    
 }

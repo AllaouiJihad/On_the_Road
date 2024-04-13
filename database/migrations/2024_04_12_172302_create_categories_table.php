@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('voyages', function (Blueprint $table) {
-            $table->string('destination');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('category');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('voyages', function (Blueprint $table) {
-            $table->dropColumn('destination');
-        });
+        Schema::dropIfExists('categories');
     }
 };

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +47,20 @@ Route::get('/about',[GuideController::class, 'affichage']);
 
 Route::get('/contact', [ContactController::class,'showForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class,'submitForm'])->name('contact.submit');
+
+
+Route::get('/types',[TypeController::class,'showTypes']);
+Route::post('/types',[TypeController::class,'addType'])->name('add.type');
+Route::put('/types/{id}',[TypeController::class,'updateType'])->name('update.type');
+Route::delete('/types/{id}',[TypeController::class,'deleteType'])->name('delete.type');
+
+
+Route::get('/destinations',[DestinationController::class,'showDestinations']);
+Route::post('/destinations',[DestinationController::class,'addDestination'])->name('add.destination');
+Route::put('/destinations/{id}',[DestinationController::class,'updateDestination'])->name('update.destination');
+Route::delete('/destinations/{id}',[DestinationController::class,'deleteDestination'])->name('delete.destination');
+
+Route::get('/categories',[CategoryController::class,'showCategories']);
+Route::post('/categories',[CategoryController::class,'addCategory'])->name('add.category');
+Route::put('/categories/{id}',[CategoryController::class,'updateCategory'])->name('update.category');
+Route::delete('/categories/{id}',[CategoryController::class,'deleteCategory'])->name('delete.category');

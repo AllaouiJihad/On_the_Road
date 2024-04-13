@@ -13,11 +13,14 @@
                             <!-- SECTION 1 -->
                             <h4></h4>
                             <section>
-                                @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+
                                 <div class="form-group">
                                     <label for="form-control">Titre</label>
                                     <input type="text" name="titre" class="form-control" placeholder="Name"
@@ -26,6 +29,8 @@
                                 @error('titre')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="form-control">Destination</label>
                                     <input type="text" name="destination" class="form-control" placeholder="destination"
@@ -34,6 +39,8 @@
                                 @error('destination')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="">description</label>
                                     <textarea name="description" type="text" class="form-control"> {{ old('description') }}</textarea>
@@ -41,6 +48,8 @@
                                 @error('description')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="">date Depart</label>
                                     <input name="date_depart" type="date" class="form-control" placeholder="Phone number"
@@ -49,6 +58,8 @@
                                 @error('date_depart')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="">date Reteur</label>
                                     <input name="date_reteur" type="date" class="form-control" placeholder="Phone number"
@@ -57,6 +68,8 @@
                                 @error('date_reteur')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="">Prix</label>
                                     <input name="prix" type="number" class="form-control" placeholder="Street address"
@@ -65,6 +78,8 @@
                                 @error('prix')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="form-group">
                                     <label for="">nombre de places</label>
                                     <input type="number" name="nbr_places" value="{{ old('nbr_places') }}"
@@ -73,6 +88,8 @@
                                 @error('nbr_places')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="mb-3">
                                     <label for="media" class="form-label">Choose an image</label>
                                     <input type="file" class="form-control" id="media" name="media"
@@ -82,10 +99,12 @@
                                 @error('media')
                                     <div class="alert alert-danger"> {{ $message }}</div>
                                 @enderror
+
+
                                 <div class="mb-3">
                                     <button type="submit">submit</button>
-
                                 </div>
+                                
                             </section> <!-- SECTION 2 -->
 
 
@@ -95,5 +114,4 @@
             </div>
         </div>
     </div>
-
 @endsection

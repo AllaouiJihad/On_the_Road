@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guides', function (Blueprint $table) {
-            $table->timestamps();
+        Schema::table('guides', function (Blueprint $table) {
+            $table->string('region');
         });
     }
 
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guides');
+        Schema::table('guides', function (Blueprint $table) {
+            //
+        });
     }
 };

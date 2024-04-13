@@ -150,21 +150,21 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/guide"
                                 aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
                                 <span class="hide-menu">Ajouter Guide</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/voyage"
                                 aria-expanded="false">
-                                <i class="fa-solid fa-box-archive"></i>
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
                                 <span class="hide-menu">Ajouter voyage</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/guides"
                                 aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
                                 <span class="hide-menu">Les Guides</span>
                             </a>
                         </li>
@@ -172,15 +172,29 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/categories"
                                 aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
                                 <span class="hide-menu">Les Voyages</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/tags"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/categories"
                                 aria-expanded="false">
-                                <i class="fa fa-hashtag" aria-hidden="true"></i>
-                                <span class="hide-menu">Tags</span>
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
+                                <span class="hide-menu">Les Categories</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/types"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
+                                <span class="hide-menu">Les Types</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/destinations"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
+                                <span class="hide-menu">Les destinations</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

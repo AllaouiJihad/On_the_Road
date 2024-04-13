@@ -23,7 +23,7 @@ class GuideController extends Controller
             'email.unique' => 'Cette adresse email est déjà utilisée.',
             'password.required' => 'Le champ mot de passe est requis.',
             'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
-            'specialty.required' => 'Le champ spécialité est requis.',
+            'region.required' => 'Le champ spécialité est requis.',
             'tel.required' => 'Le champ telephone est requis.',
             'media.image' => 'Le fichier doit être une image',
 
@@ -32,7 +32,7 @@ class GuideController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email', // Assure l'unicité de l'email dans la table users
             'password' => 'required|string|min:8',
-            'specialty' => 'required|string',
+            'region' => 'required|string',
             'tel' => 'required',
             'media' => 'nullable|image|required',
         ],$messages);
@@ -49,7 +49,7 @@ class GuideController extends Controller
         ]);
 
         $guide = new Guide([
-            'specialty' => $validatedData['specialty'],
+            'region' => $validatedData['region'],
             'media' => $mediaPath,
         ]);
         $user->guide()->save($guide);
@@ -72,7 +72,7 @@ class GuideController extends Controller
                 'tel' => $request->tel,
             ]);
             Guide::where('user_id', $id)->update([
-                'specialty' => $request->specialty,
+                'region' => $request->region,
             ]);
             return redirect()->back()->with('success', 'Guide mis à jour avec succès!');
         } 

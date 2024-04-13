@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guide extends User
+class Type extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'region',
-        'user_id',
-        'media',
+        'type',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function voyages(){
+        return $this->hasMany(Voyage::class);
     }
 }
