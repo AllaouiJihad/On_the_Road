@@ -30,8 +30,12 @@ Route::post('/signin', [UserController::class,'signin'])->name('signin');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/voyage',[VoyageController::class, 'index']);
-
 Route::post('/voyage',[VoyageController::class, 'store'])->name('addVoyage');
+
+Route::get('/voyages',[VoyageController::class, 'getVoyages']);
+Route::put('/voyages/{id}',[VoyageController::class, 'updateVoyage'])->name('update.voyage');
+Route::delete('/voyages/{id}',[VoyageController::class, 'destroyVoyage'])->name('delete.voyage');
+Route::get('/detailsVoyage/{id}',[VoyageController::class,'getVoyage'])->name('voyage.details');
 
 Route::get('/guide',[GuideController::class,'index']);
 Route::post('/guide',[GuideController::class, 'store'])->name('addGuide');

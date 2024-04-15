@@ -26,4 +26,20 @@ class Voyage extends Model
         "type_id",
         "guide_id",
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
+
+    public function destination(){
+        return $this->belongsTo(Destination::class);
+    }
+
+    public function guide(){
+        return $this->belongsTo(Guide::class);
+    }
 }

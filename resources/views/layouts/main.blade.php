@@ -170,7 +170,7 @@
                         </li>
                       
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/categories"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/voyages"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-cloud" style="color: #ff1654"></i>
                                 <span class="hide-menu">Les Voyages</span>

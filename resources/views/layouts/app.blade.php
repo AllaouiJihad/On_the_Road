@@ -270,7 +270,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                                 <a class="nav-link" href="pricing.html">Packages</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Blog<span class="fa fa-angle-down"></span>
                                 </a>
