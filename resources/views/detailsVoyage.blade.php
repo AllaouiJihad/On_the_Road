@@ -1,5 +1,35 @@
 @extends('layouts.app')
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+    body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+</style>
+@if (session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'success',
+            title: 'Succès!',
+            text: "{{ session('success') }}",
+        });
+    });
+</script>
+@endif
+
+@if (session('error'))
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur!',
+            text: "{{ session('error') }}",
+        });
+    });
+</script>
+@endif
     <!-- about breadcrumb -->
     <section class="w3l-about-breadcrumb text-left">
         <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
@@ -98,7 +128,7 @@
                         <div class="gallery-inner container py-lg-0 py-3">
                             <div class="row stats-con pb-lg-3">
                                 <div class="col-lg-3  stats_info counter_grid2 mt-lg-0 mt-5">
-                                    <p class="counter">5|{{$voyage->nbr_places}} </p>
+                                    <p class="counter">{{$reservation->count()}} |{{ $voyage->nbr_places }} </p>
                                     <h4>Nombre de place restée</h4>
                                 </div>
                             </div>
@@ -130,10 +160,15 @@
 
                                             </div>
                                             <div class="column price-number text-md-right">
-                                                <h3 class="pricing"> {{ $voyage->prix - 1 }}<sup class="pri">99</sup><sup
-                                                        class="pri1">DH</sup>
+                                                <h3 class="pricing"> {{ $voyage->prix - 1 }}<sup
+                                                        class="pri">99</sup><sup class="pri1">DH</sup>
                                                 </h3>
-                                                <button class="btn btn-style btn-primary ml-lg-3">Book Now</button>
+                                                <form action="{{ route('voyage.reservation', $voyage->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-style btn-primary ml-lg-3">Book
+                                                        Now</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

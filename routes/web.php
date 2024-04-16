@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoyageController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[VoyageController::class,'listVoyage'])->name('home');
 
 Route::get('/signup', [UserController::class, 'showRegister']);
-Route::get('/signin', [UserController::class, 'showLogin']);
+Route::get('/signin', [UserController::class, 'showLogin'])->name('login');
 
 Route::post('/signup', [UserController::class,'register'])->name('register');
 Route::post('/signin', [UserController::class,'signin'])->name('signin');
@@ -36,6 +37,8 @@ Route::get('/voyages',[VoyageController::class, 'getVoyages']);
 Route::put('/voyages/{id}',[VoyageController::class, 'updateVoyage'])->name('update.voyage');
 Route::delete('/voyages/{id}',[VoyageController::class, 'destroyVoyage'])->name('delete.voyage');
 Route::get('/detailsVoyage/{id}',[VoyageController::class,'getVoyage'])->name('voyage.details');
+
+Route::post('/detailsVoyage/{id}',[ReservationController::class,'reserver'])->name('voyage.reservation')->middleware('auth');
 
 Route::get('/guide',[GuideController::class,'index']);
 Route::post('/guide',[GuideController::class, 'store'])->name('addGuide');
@@ -68,3 +71,5 @@ Route::get('/categories',[CategoryController::class,'showCategories']);
 Route::post('/categories',[CategoryController::class,'addCategory'])->name('add.category');
 Route::put('/categories/{id}',[CategoryController::class,'updateCategory'])->name('update.category');
 Route::delete('/categories/{id}',[CategoryController::class,'deleteCategory'])->name('delete.category');
+
+

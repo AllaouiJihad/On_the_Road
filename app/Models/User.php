@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Guide::class);
     }
+
+    public function reservation()
+    {
+        return $this->hasOne(Reservation::class);
+    }
 }

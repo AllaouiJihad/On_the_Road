@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateVoyageRequest;
 use App\Models\category;
 use App\Models\Destination;
 use App\Models\Guide;
+use App\Models\Reservation;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -161,6 +162,7 @@ class VoyageController extends Controller
 
     public function getVoyage($id){
         $voyage = Voyage::with('type')->where('id', $id)->first();
-        return view('detailsVoyage',compact('voyage'));
+        $reservation = Reservation::where('voyage_id',$id)->get();
+        return view('detailsVoyage',compact('voyage','reservation'));
     }
 }
