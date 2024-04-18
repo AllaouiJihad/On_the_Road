@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Reservation::class);
     }
+
+    public function blog(){
+        return $this->hasMany(Blog::class);
+    }
 }

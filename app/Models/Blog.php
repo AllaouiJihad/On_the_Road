@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservation extends Model
+class Blog extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-       'user_id',
-       'voyage_id',
+        "title",
+        "description",
+        "user_id",
+        "media",
     ];
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
-    }
-    public function voyage(){
-        return $this->belongsTo(Voyage::class);
     }
 }

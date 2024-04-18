@@ -70,6 +70,7 @@
         <!-- New toolbar-->
         <style>
             * {
+                /* border: 1px solid red; */
                 box-sizing: border-box;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             }
@@ -241,7 +242,7 @@ RIGHT SIDEBAR TOGGLE SECTION
             <div class="container">
                 <nav class="navbar navbar-expand-lg stroke">
                     <h1><a class="navbar-brand mr-lg-5" href="/">
-                            Roaming Trails
+                            On The Road
                         </a></h1>
                     <!-- if logo is image enable this
       <a class="navbar-brand" href="#index.html">
@@ -263,21 +264,29 @@ RIGHT SIDEBAR TOGGLE SECTION
                             <li class="nav-item">
                                 <a class="nav-link" href="/about">About</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="services.html">Destinations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pricing.html">Packages</a>
+                           
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Destinations<span class="fa fa-angle-down"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    @foreach ($destinations as $destination)
+                                    <a class="dropdown-item" href="{{route('destination.voyages',$destination->id)}} ">{{$destination->destination}} </a>
+
+                                    @endforeach
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog<span class="fa fa-angle-down"></span>
+                                    Categories<span class="fa fa-angle-down"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                    <a class="dropdown-item" href="blog.html">Blog Posts</a>
-                                    <a class="dropdown-item" href="blog-single.html">Blog single</a>
-                                    <a class="dropdown-item" href="landing-single.html">Landing Page</a>
+                                    @foreach ($categories as $category)
+                                    <a class="dropdown-item" href="{{route('category.voyages',$category->id)}} ">{{$category->category}} </a>
+
+                                    @endforeach
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -300,10 +309,11 @@ RIGHT SIDEBAR TOGGLE SECTION
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <li>
-                                    <a class="dropdown-item d-block" href="">
+                                    <a class="dropdown-item d-block" href="/myreservation">
                                         Mes reservations
                                     </a>
                                 </li>
+                                
                                 {{-- <li>
                                     <a class="dropdown-item d-block" href="">
                                         {{ __('Profile') }}
@@ -312,10 +322,15 @@ RIGHT SIDEBAR TOGGLE SECTION
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <button type="submit" class="dropdown-item">
+                                        <button  type="submit" class="dropdown-item  d-block mb-2">
                                             {{ __('Log Out') }}
                                         </button>
                                     </form>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-block mb-2" href="/addblog">
+                                        Ajouter blog
+                                    </a>
                                 </li>
                             </ul>
                         </div>

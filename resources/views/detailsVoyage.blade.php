@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
     body {
@@ -142,11 +141,25 @@
 
 
                             </div>
+                            @if ($reservation->count() == $voyage->nbr_places)
                             <div class="container py-lg-4">
                                 <!--/pricing-info-grids-->
                                 <div class="pricing-info-grids">
                                     <!--/box-->
-                                    <div class="price-box">
+                                    <div class="price-box w-100">
+                                        <div class="grid grid-column-2">
+                                        <img src="{{asset('assets/images/icons8-réservation-2-50.png')}}" alt="">
+                                                <h5 class="w-100">Toutes les places sont réservées, nous sommes prêts à s'amuser! </h5>
+                                         </div>
+                                    </div>
+                                </div>
+                                </div>
+                            @else
+                            <div class="container py-lg-4">
+                                <!--/pricing-info-grids-->
+                                <div class="pricing-info-grids">
+                                    <!--/box-->
+                                    <div class="price-box w-100">
                                         <div class="grid grid-column-2">
                                             <div class="column pr-img-gd">
                                                 <h6 class=""><span class="fa fa-delicious mr-2"
@@ -163,17 +176,20 @@
                                                 <h3 class="pricing"> {{ $voyage->prix - 1 }}<sup
                                                         class="pri">99</sup><sup class="pri1">DH</sup>
                                                 </h3>
+                                                
                                                 <form action="{{ route('voyage.reservation', $voyage->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     <button type="submit" class="btn btn-style btn-primary ml-lg-3">Book
                                                         Now</button>
                                                 </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </section>
 
@@ -189,3 +205,9 @@
 
     </div>
 @endsection
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
+" rel="stylesheet">

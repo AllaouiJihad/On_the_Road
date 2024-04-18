@@ -20,8 +20,8 @@ class UserController extends Controller
     {
         return view('signin');
     }
-    
-    
+
+
     public function register(Request $request)
     {
         $messages = [
@@ -33,25 +33,25 @@ class UserController extends Controller
             'password.min' => 'Le mot de passe doit avoir au moins :min caractères.',
             'tel.required' => 'Le numéro de téléphone est requis.',
         ];
-        
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|min:8',
             'tel' => 'required',
         ], $messages);
-        
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
+
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'tel' => $request->input('tel'),
             'password' => Hash::make($request->input('password')),
         ]);
-        
+
         if ($user) {
             return redirect()->route('signin');
         } else {
@@ -59,31 +59,30 @@ class UserController extends Controller
                 'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
             ]);
         }
-        
     }
 
-    
+
     public function signin(Request $request)
-{
-    // Valider les données du formulaire
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ], [
-        'email.required' => 'Le champ adresse e-mail est requis.',
-        'email.email' => 'Le champ adresse e-mail doit être une adresse e-mail valide.',
-        'password.required' => 'Le champ mot de passe est requis.',
-    ]);
+    {
+        // Valider les données du formulaire
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Le champ adresse e-mail est requis.',
+            'email.email' => 'Le champ adresse e-mail doit être une adresse e-mail valide.',
+            'password.required' => 'Le champ mot de passe est requis.',
+        ]);
 
-    $credentials = $request->only('email', 'password');
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->route('home');
-    } else {
-        $errors = ['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'];
-        return back()->withErrors($errors)->withInput();
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('home');
+        } else {
+            $errors = ['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'];
+            return back()->withErrors($errors)->withInput();
+        }
     }
-}
 
     public function logout(Request $request)
     {
@@ -92,5 +91,4 @@ class UserController extends Controller
         $request->session()->invalidate();
         return redirect()->route('signin');
     }
-
 }

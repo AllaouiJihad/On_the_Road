@@ -42,4 +42,8 @@ class Voyage extends Model
     public function guide(){
         return $this->belongsTo(Guide::class);
     }
+
+    public function reservation(){
+        return $this->hasMany(Reservation::class);
+    }
 }

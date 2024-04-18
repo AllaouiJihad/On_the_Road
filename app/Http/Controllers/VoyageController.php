@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Voyage;
 use App\Http\Requests\StoreVoyageRequest;
 use App\Http\Requests\UpdateVoyageRequest;
+use App\Models\Blog;
 use App\Models\category;
 use App\Models\Destination;
 use App\Models\Guide;
 use App\Models\Reservation;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -20,8 +22,11 @@ class VoyageController extends Controller
      * Display a listing of the resource.
      */
     public function listVoyage(){
-        $voyages = Voyage::whereDate('date_depart', '>=', Carbon::now())->limit(6)->get();        
-        return view('welcome',compact('voyages'));
+        $voyages = Voyage::whereDate('date_depart', '>=', Carbon::now())->limit(6)->get();  
+        $avis  = Blog::with('user')->limit(4)->get();
+        $guide = Guide::all();     
+        $users = User::where('role_id', '=', 2)->get();
+        return view('welcome',compact('voyages','avis','guide','users'));
     }
 
     public function index()
@@ -164,5 +169,20 @@ class VoyageController extends Controller
         $voyage = Voyage::with('type')->where('id', $id)->first();
         $reservation = Reservation::where('voyage_id',$id)->get();
         return view('detailsVoyage',compact('voyage','reservation'));
+    }
+
+    public function VoyageDestination($id){
+        $voyages = Voyage::join('categories', 'categories.id', '=', 'voyages.category_id')
+                  ->where('categories.id', $id)
+                  ->get();
+        return view('destinationVoyage',compact('voyages'));
+    }
+
+    public function VoyageCategory($id){
+        $voyages = Voyage::join('categories', 'categories.id', '=', 'voyages.category_id')
+                  ->where('categories.id', $id)
+                  ->get();
+        return view('destinationVoyage',compact('voyages'));
+      
     }
 }

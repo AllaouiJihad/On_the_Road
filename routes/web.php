@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
@@ -73,3 +75,13 @@ Route::put('/categories/{id}',[CategoryController::class,'updateCategory'])->nam
 Route::delete('/categories/{id}',[CategoryController::class,'deleteCategory'])->name('delete.category');
 
 
+Route::get('/destination/voyages/{id}',[VoyageController::class,'VoyageDestination'])->name('destination.voyages');
+Route::get('/category/voyages/{id}',[VoyageController::class,'VoyageCategory'])->name('category.voyages');
+
+Route::get('myreservation',[ReservationController::class,'myReservation']);
+
+Route::get('/addblog',[BlogController::class,'index']);
+Route::post('/addblog',[BlogController::class,'store'])->name('add.blog')->middleware('auth');
+
+
+Route::get('/generate-ticket/{id}',[PdfController::class,'index'])->name('generate.ticket')->middleware('auth');
