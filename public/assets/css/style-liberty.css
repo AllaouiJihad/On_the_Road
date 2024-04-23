@@ -45,6 +45,7 @@ Author URL: http://w3layouts.com
 *::before,
 *::after {
   box-sizing: border-box;
+  /* border: #000 1px solid; */
 }
 
 html {
@@ -15029,7 +15030,7 @@ nav ul li a:hover {
   width: 100%;
   font-size: 16px;
   line-height: 25px;
-  padding: 12px 15px 12px 12px;
+  padding: 12px 2px 12px 12px;
   color: #555;
   border-radius: 8px;
   border: 1px solid transparent;

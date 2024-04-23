@@ -13,12 +13,12 @@
                         <div class="banner-infhny ">
                             <h3>You don't need to go far to find what matters.</h3>
                             <h6 class="mb-3">Discover your next adventure</h6>
-                            <div class="flex-wrap search-wthree-field mt-md-5 mt-4">
-                                <form action="#" method="post" class="booking-form">
+                            <div class="flex-wrap search-wthree-field m-auto mt-md-5 mt-4">
+                                <div aclass="booking-form">
                                     <div class="row book-form">
-                                        <div class="form-input col-md-4 mt-md-0 mt-3">
+                                        <form class="form-input col-md-3 mt-md-0 mt-3">
 
-                                            <select name="selectpicker" class="selectpicker">
+                                            <select name="destination" id="search_destination" class="form-control">
                                                 <option value="">Destination</option>
 
                                                 @foreach ($destinations as $destination)
@@ -27,10 +27,10 @@
                                                 @endforeach
                                             </select>
 
-                                        </div>
-                                        <div class="form-input col-md-4 mt-md-0 mt-3">
+                                        </form>
+                                        <div class="form-input col-md-3 mt-md-0 mt-3">
 
-                                            <select name="selectpicker" class="selectpicker">
+                                            <select name="type" id="search_type" class="form-control">
                                                 <option value="">Type</option>
 
                                                 @foreach ($types as $type)
@@ -40,17 +40,17 @@
 
                                         </div>
                                        
-                                        <div class="form-input col-md-4 mt-md-0 mt-3">
+                                        <div class="form-input col-md-3 mt-md-0 mt-3">
 
-                                            <input type="date" name="" placeholder="Date" required="">
+                                            <input type="date" id="search_date" name="" class="form-control" placeholder="Date" required="">
                                         </div>
-                                        <div class="bottom-btn col-md-4 mt-md-0 mt-3">
-                                            <button class="btn btn-style btn-secondary"><span class="fa fa-search mr-3"
+                                        <div class="bottom-btn col-md-3 ms-5 mt-md-0 mt-3">
+                                            <button class="btn btn-style btn-secondary " id="search_button"><span class="fa fa-search mr-3"
                                                     aria-hidden="true"></span>
-                                                Search</button>
+                                                </button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                 <!---728x90--->
 
             </div>
-            <div class="row bottom-ab-grids">
+            <div class="row bottom-ab-grids" id="search_result">
                 <!--/row-grids-->
 
                 @foreach ($voyages as $voyage)
@@ -113,9 +113,9 @@
     </section>
     <!--//grids-->
     <!-- stats -->
-    <section class="w3l-stats py-5" id="stats">
-        <div class="gallery-inner container py-lg-0 py-3">
-            <div class="row stats-con pb-lg-3">
+    <section class="w3l-stats py-5 " id="stats">
+        <div class="gallery-inner container  py-lg-0 py-3">
+            <div class="row stats-con pb-lg-3 m-auto">
                 
                 <div class="col-lg-3 col-6 stats_info counter_grid1">
                     <p class="counter">{{$guide->count()}} </p>
@@ -282,4 +282,7 @@
 
     </div>
     <!--/w3l-footer-29-main-->
+    <script src="{{asset('assets/js/search.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @endsection

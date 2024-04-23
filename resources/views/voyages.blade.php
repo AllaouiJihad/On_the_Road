@@ -26,6 +26,7 @@
                                 <th class="border-top-0">prix</th>
                                 <th class="border-top-0">nbr_places</th>
                                 <th class="border-top-0">region</th>
+                                <th class="border-top-0">Reservations</th>
                                 <th>action</th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                                     <td class="txt-oflo">{{ $voyage->prix }}</td>
                                     <td class="txt-oflo">{{ $voyage->nbr_places }}</td>
                                     <td class="txt-oflo">{{ $voyage->region }}</td>
+                                    <td class="txt-oflo"><a href="{{route('reervation.voyage',$voyage->id)}}">reservations</a></td>
                                     <td class="d-flex">
 
                                         <button type="button" class="border-0 bg-transparent" data-toggle="modal"

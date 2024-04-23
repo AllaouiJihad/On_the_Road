@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}"> --}}
 
-    <title>Roaming Trails</title>
+    <title>OnTheRoad</title>
     <!-- <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" /> -->
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand text-dark font-weight-bold" href="/">
-                       <strong>Roaming Trails</strong> 
+                       <strong>OnTheRoad</strong> 
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -132,7 +132,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/statistique"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>

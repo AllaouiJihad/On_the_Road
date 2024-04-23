@@ -25,4 +25,9 @@ class ReservationController extends Controller
         $reservations = Reservation::with('voyage')->where('user_id',Auth::id())->get();
         return view('myreservation',compact('reservations'));
     }
+
+    public function reservationVoyage($id){
+        $reservations = Reservation::with('user')->with('voyage')->where('voyage_id',$id)->get();
+        return view('reservationVoyage',compact('reservations'));
+    }
 }

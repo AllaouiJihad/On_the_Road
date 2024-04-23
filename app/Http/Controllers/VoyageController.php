@@ -185,4 +185,22 @@ class VoyageController extends Controller
         return view('destinationVoyage',compact('voyages'));
       
     }
+
+
+    public function searchVoyage(Request $request){
+        $type = $request->input('type');
+        $date = $request->input('date');
+        $destination = $request->input('destination');
+
+        if ($type === '' || $date === '' || $destination === '') {
+            $voyages = Voyage::whereDate('date_depart', '>=', Carbon::now())->limit(6)->get();  
+        } else {
+            $voyages = Voyage::where('type_id', $type)
+                ->orWhere('destination_id', $destination)
+                ->orWhereDate('date_depart', $date)
+                ->get();
+        }
+
+        return view('search')->with(['voyages' => $voyages]);
+    }
 }
