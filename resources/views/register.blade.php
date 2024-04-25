@@ -15,6 +15,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="{{asset('assets/js/validation.js')}}"></script>
     <meta name="robots" content="noindex, follow">
     <script nonce="9689140a-b022-4b3f-b57e-29e29385c581">
         try {
@@ -102,7 +103,7 @@
                             <div class="form-group">
                                 <label for="name"><i class="fa-solid fa-user"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name" value="{{ old('name') }}" />
-
+                                <small></small>
                             </div>
                             @error('name')
                                 <div class="alert alert-danger"> {{ $message }}</div>
@@ -110,7 +111,7 @@
                             <div class="form-group">
                                 <label for="email"><i class="fa-solid fa-envelope"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email" value="{{ old('email') }}"  />
-
+                                <small></small>
                             </div>
                             @error('email')
                                 <div class="alert alert-danger"> {{ $message }}</div>
@@ -118,7 +119,7 @@
                             <div class="form-group">
                                 <label for="re-pass"><i class="fa-solid fa-phone"></i></label>
                                 <input type="text" name="tel" id="re_pass" placeholder="Your phone" value="{{ old('tel') }}"  />
-
+                                <small></small>
                             </div>
                             @error('tel')
                                 <div class="alert alert-danger"> {{ $message }}</div>
@@ -126,7 +127,7 @@
                             <div class="form-group">
                                 <label for="pass"><i class="fa-solid fa-lock"></i></label>
                                 <input type="password" name="password" id="pass" placeholder="Password" value="{{ old('password') }}" />
-
+                                <small></small>
                             </div>
                             @error('password')
                                 <div class="alert alert-danger"> {{ $message }}</div>

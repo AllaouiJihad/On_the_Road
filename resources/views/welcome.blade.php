@@ -222,7 +222,6 @@
                                 voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
                                 ipsum dolor sit
                                 amet adipisicing elit.</p>
-                            <a href="about.html" class="btn btn-style btn-secondary mt-5">Read More</a>
                         </div>
 
 
@@ -255,9 +254,7 @@
                                         {{$avi->description}}
                                     </blockquote>
                                     <div class="testi-des">
-                                        <div class="test-img"><img src="{{ asset('storage/' . $avi->media) }}" class="img-fluid"
-                                                alt="client-img">
-                                        </div>
+                                       
                                         <div class="peopl align-self">
                                             <h3>{{$avi->user->name}} </h3>
                                             <p class="indentity">Example City</p>

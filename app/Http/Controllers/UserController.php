@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repositories\RepositoryInterface\UserRepositoryInterface;
+use App\Services\UserServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +12,16 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    protected $userRepository;
+    protected $userService;
 
+    public function __construct(UserRepositoryInterface $userRepository, UserServiceInterface $userService)
+    {
+        $this->userRepository = $userRepository;
+        $this->userService = $userService;
+    }
+
+    
     public function showRegister()
     {
         return view('register');
@@ -21,6 +32,11 @@ class UserController extends Controller
         return view('signin');
     }
 
+
+    
+
+
+ 
 
     public function register(Request $request)
     {
@@ -44,39 +60,31 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $userData = $request->only(['name', 'email', 'tel', 'password']);
 
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'tel' => $request->input('tel'),
-            'password' => Hash::make($request->input('password')),
-        ]);
+        $user = $this->userService->register($userData);
 
         if ($user) {
-            return redirect()->route('signin');
+            return redirect()->route('login');
         } else {
-            return redirect()->back()->withErrors([
-                'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
-            ]);
+            return back()->withErrors(['error' => 'Une erreur s\'est produite lors de la création de votre compte. Veuillez réessayer.'])->withInput();
         }
     }
 
-
     public function signin(Request $request)
     {
-        // Valider les données du formulaire
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ], [
+        $messages =  [
             'email.required' => 'Le champ adresse e-mail est requis.',
             'email.email' => 'Le champ adresse e-mail doit être une adresse e-mail valide.',
             'password.required' => 'Le champ mot de passe est requis.',
-        ]);
-
+        ];
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], $messages);
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+
+        if ($this->userService->signin($credentials)) {
             return redirect()->route('home');
         } else {
             $errors = ['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'];
@@ -86,9 +94,7 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-        // dd($request->session());
-        $request->session()->invalidate();
-        return redirect()->route('signin');
+        $this->userService->logout();
+        return redirect()->route('signin')->with('success', 'Vous avez été déconnecté avec succès.');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\RepositoryInterface\UserRepositoryInterface ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,6 +13,7 @@ class UserService implements UserServiceInterface
     {
         $this->userRepository = $userRepository;
     }
+
 
     public function register(array $userData)
     {

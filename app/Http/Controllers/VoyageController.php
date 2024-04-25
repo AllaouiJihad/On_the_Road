@@ -101,7 +101,7 @@ class VoyageController extends Controller
     }
 
     public function getVoyages(){
-        $voyages = Voyage::with('category')->with('type')->with('destination')->get();
+        $voyages = Voyage::with('category')->with('type')->with('destination')->orderBy('date_depart','desc')->get();
         $destinations = Destination::all();
         $types = Type::all();
         $categories = category::all();

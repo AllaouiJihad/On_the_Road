@@ -25,11 +25,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/detailsVoyage/{id}', [ReservationController::class, 'reserver'])->name('voyage.reservation');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('myreservation', [ReservationController::class, 'myReservation']);
     Route::get('/generate-ticket/{id}', [PdfController::class, 'index'])->name('generate.ticket');
     Route::post('/addblog', [BlogController::class, 'store'])->name('add.blog');
+    Route::post('/detailsVoyage/{id}', [ReservationController::class, 'reserver'])->name('voyage.reservation');
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -38,7 +39,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/voyages', [VoyageController::class, 'getVoyages']);
     Route::put('/voyages/{id}', [VoyageController::class, 'updateVoyage'])->name('update.voyage');
     Route::delete('/voyages/{id}', [VoyageController::class, 'destroyVoyage'])->name('delete.voyage');
-    Route::get('/detailsVoyage/{id}', [VoyageController::class, 'getVoyage'])->name('voyage.details');
 
     Route::get('/guide', [GuideController::class, 'index']);
     Route::post('/guide', [GuideController::class, 'store'])->name('addGuide');
@@ -66,12 +66,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/destination/voyages/{id}', [VoyageController::class, 'VoyageDestination'])->name('destination.voyages');
     Route::get('/category/voyages/{id}', [VoyageController::class, 'VoyageCategory'])->name('category.voyages');
 
-    Route::get('/statistique', [StatistiqueController::class, 'index']);
+    Route::get('/statistique', [StatistiqueController::class, 'index'])->name('dashboard');
     Route::get('/reservation/{id}', [ReservationController::class, 'reservationVoyage'])->name('reervation.voyage');
 
 
 });
 Route::get('/', [VoyageController::class, 'listVoyage'])->name('home');
+Route::get('/detailsVoyage/{id}', [VoyageController::class, 'getVoyage'])->name('voyage.details');
 
 Route::get('/signup', [UserController::class, 'showRegister']);
 Route::get('/signin', [UserController::class, 'showLogin'])->name('login');
